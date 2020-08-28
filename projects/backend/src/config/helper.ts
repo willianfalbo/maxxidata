@@ -1,10 +1,8 @@
 import { Logger } from '@nestjs/common';
 
-const errorMessage =
-  'Make sure you have all configuration setup in your .env file';
-
-export function checkConfig(value: any): void {
+export function checkConfig(value: any): any {
   if (!value) {
+    const errorMessage = "Make sure you have set all variables in your '.env' file";
     Logger.error(errorMessage);
     throw new Error(errorMessage);
   }

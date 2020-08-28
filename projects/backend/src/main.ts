@@ -4,7 +4,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
 import { Logger } from '@nestjs/common';
 import * as config from './config/server';
-import * as swaggerConfig from './config/swagger';
+import swaggerConfig from './config/swagger';
 
 async function bootstrap() {
   // express
@@ -17,7 +17,7 @@ async function bootstrap() {
   app.enableCors({ origin: config.ALLOWED_ORIGIN });
 
   // swagger
-  const document = SwaggerModule.createDocument(app, swaggerConfig.SWAGGER_CONFIG);
+  const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('/', app, document);
 
   await app.listen(config.PORT, () => {
