@@ -15,3 +15,5 @@ Run `npm install -g @angular/cli` to install it globally
 This project uses NestJS framework for Node backend.
 
 Run `npm i -g @nestjs/cli` to install it globally.
+
+Run `cp projects/backend/.env.sample projects/backend/.env` to create an environment configuration file.
