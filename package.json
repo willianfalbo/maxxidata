@@ -7,6 +7,9 @@
   "scripts": {
     "start:dev": "lerna run start:dev --parallel",
     "test": "lerna run test --parallel",
-    "test:cov": "lerna run test:cov --parallel"
+    "test:cov": "lerna run test:cov --parallel",
+    "copy:env": "cp projects/backend/.env.sample projects/backend/.env",
+    "typeorm:run": "lerna run typeorm:run",
+    "docker:db": "docker-compose -f projects/backend/docker-compose.yml up --build"
   }
 }

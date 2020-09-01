@@ -1,30 +1,69 @@
-## Monorepo
+## Maxxidata
 
-This project uses Lerna as monorepo.
+Coding Exercise / Technical Challenge.
 
-Run `npm install --global lerna` to install it globally.
+## Stack
 
-## Frontend
+This project uses:
 
-This project uses Angular7+ in the frontend.
+- [Lerna](https://lerna.js.org/) as monorepo.
+- [Angular 7+](https://angular.io/) in the frontend.
+- [Nest.js](https://nestjs.com/) as the backend Node.js framework.
+- [Postgres](https://www.postgresql.org/) as the SQL database.
 
-Run `npm install -g @angular/cli` to install it globally
+## Quick Start
 
-## Backend
+> **Node.js**: Before starting, please make sure you have [Node](https://nodejs.org/en/) installed on your machine.
 
-This project uses NestJS framework for Node backend.
+1. Initial steps:
 
-Run `npm i -g @nestjs/cli` to install it globally.
+   ```bash
+   # 1. install lerna, angular cli and nestjs globally
+   $ npm i -g lerna @angular/cli @nestjs/cli
 
-Run `cp projects/backend/.env.sample projects/backend/.env` to create an environment configuration file.
+   # 2. create a '.env' file in the backend project
+   $ npm run copy:env
 
-> **Docker**
->
-> The backend uses docker for creating the database. If you don't have it installed yet, please check [Docker Installation](https://docs.docker.com/engine/install/).
->
-> Alternatively, run the script below for quick & easy install via:
->
-> ```bash
-> $ curl -fsSL https://get.docker.com -o get-docker.sh
-> $ sh get-docker.sh
-> ```
+   # 3. install packages and link any cross-dependencies
+   $ lerna bootstrap
+   ```
+
+2. Create a Postgres database called 'maxxidata' (or any name you like).
+
+   > **Tip**: You could run the following command if you have [Docker](https://docs.docker.com/engine/install) installed. It will create a container for Postgres. The database name must be created manually.
+   >
+   > ```bash
+   > $ npm run docker:db
+   > ```
+
+   > **Important**: Please make sure your `.env` file is configured properly for Postgres. It is located on `(projects > backend > .env)`. The default configurations are:
+   >
+   > ```
+   > DB_HOST=localhost
+   > DB_PORT=5432
+   > DB_USER=postgres
+   > DB_PASSWORD=password
+   > DB_NAME=maxxidata
+   > ```
+
+3. Final steps:
+
+   ```bash
+   # run the database migrations to create the tables and hardcode data
+   $ npm run typeorm:run
+
+   # start the backend/frontend server simultaneously
+   $ npm run start:dev
+   ```
+
+## Unit Tests
+
+Run the commands below for unit testing backend/frontend simultaneously:
+
+```bash
+# run unit test only
+$ npm run test
+
+# test coverage
+$ npm run test:cov
+```
