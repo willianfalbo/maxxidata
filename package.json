@@ -5,6 +5,8 @@
     "lerna": "^3.22.1"
   },
   "scripts": {
-    "start:dev": "lerna run start:dev --parallel"
+    "start:dev": "lerna run start:dev --parallel",
+    "test": "lerna run test --parallel",
+    "test:cov": "lerna run test:cov --parallel"
   }
 }

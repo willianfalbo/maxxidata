@@ -3,6 +3,7 @@ import {
   MatInputModule,
   MatProgressSpinnerModule,
   MatIconModule,
+  MatToolbarModule,
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 
@@ -12,12 +13,14 @@ import { NgModule } from '@angular/core';
     MatInputModule,
     MatProgressSpinnerModule,
     MatIconModule,
+    MatToolbarModule,
   ],
   exports: [
     MatAutocompleteModule,
     MatInputModule,
     MatProgressSpinnerModule,
     MatIconModule,
+    MatToolbarModule,
   ],
 })
 export class MaterialModule {}
