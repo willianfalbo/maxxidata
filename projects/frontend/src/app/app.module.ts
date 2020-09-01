@@ -7,9 +7,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
+import { FarmersComponent } from './farmers/farmers.component';
+import { FarmersService } from './farmers/farmers.service';
+import { FarmerSearchCardComponent } from './farmers/farmer-search-card/farmer-search-card.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, FarmersComponent, FarmerSearchCardComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -19,7 +22,7 @@ import { MaterialModule } from './material.module';
     HttpClientModule,
     MaterialModule,
   ],
-  providers: [],
+  providers: [FarmersService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

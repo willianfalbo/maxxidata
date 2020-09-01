@@ -1,0 +1,25 @@
+<div class="wrapper">
+
+  <form class="search-form">
+    <app-farmer-search-card
+      (onFarmerSelectedEvent)="selectedFarmer($event)"
+      [farmerSearchAbstractProvider]="farmerSearchProvider">
+    </app-farmer-search-card>
+  </form>
+
+  <div class="search-result">
+    <mat-form-field class="input-full-width" appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Name" value="{{ farmer?.name }}" disabled />
+    </mat-form-field>
+    <mat-form-field class="input-full-width" appearance="fill">
+      <mat-label>Doc #</mat-label>
+      <input matInput placeholder="Doc #" value="{{ farmer?.document?.documentNumber }}" disabled />
+    </mat-form-field>
+    <mat-form-field class="input-full-width" appearance="fill">
+      <mat-label>Address</mat-label>
+      <textarea matInput placeholder="Address" value="{{ farmer?.address?.address }}" disabled></textarea>
+    </mat-form-field>
+  </div>
+
+</div>

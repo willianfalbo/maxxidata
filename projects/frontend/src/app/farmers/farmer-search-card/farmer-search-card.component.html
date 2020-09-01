@@ -1,0 +1,23 @@
+<mat-form-field class="example-full-width" appearance="outline">
+  <mat-label>Name or Doc#</mat-label>
+  <input
+    matInput
+    type="text"
+    placeholder="Name or Doc#"
+    [formControl]="farmerControl"
+    [matAutocomplete]="auto" />
+  <mat-icon matPrefix>search</mat-icon>
+  <mat-autocomplete
+    #auto="matAutocomplete"
+    [displayWith]="formatSelectedOption"
+    (optionSelected)="onSelectionChanged($event)">
+    <mat-option *ngIf="isLoading" class="is-loading">
+      <mat-spinner diameter="50"></mat-spinner>
+    </mat-option>
+    <ng-container *ngIf="!isLoading">
+      <mat-option *ngFor="let option of filteredOptions" [value]="option">
+        {{ option.name }} #{{ option?.document?.documentNumber }}
+      </mat-option>
+    </ng-container>
+  </mat-autocomplete>
+</mat-form-field>
