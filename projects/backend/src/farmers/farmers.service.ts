@@ -10,14 +10,19 @@ export class FarmersService {
   ) {}
 
   async searchFarmers(term: string) {
-    const farmers = await this.farmersRepository.searchFarmers(term);
+    term = term ? term.trim().replace('#', '') : '';
 
-    const result = farmers.map(f => {
+    if (term === '') {
+      return [];
+    }
+
+    const farmers = await this.farmersRepository.searchFarmers(term);
+    const result = farmers.map(fa => {
       return {
-        ...f,
+        ...fa,
         address: {
-          ...f.address,
-          address: `${f.address.number} ${f.address.street}, ${f.address.city}, ${f.address.state} ${f.address.postalCode}`,
+          ...fa.address,
+          address: `${fa.address.number} ${fa.address.street}, ${fa.address.city}, ${fa.address.state} ${fa.address.postalCode}`,
         },
       };
     });
